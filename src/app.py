@@ -13,7 +13,7 @@ def create_item(item:Item):
     item.id = cursor.lastrowid
     return item
 
-@app.post("/items/{item_id}")
+@app.put("/items/{item_id}")
 def update_item(item_id:int, item:Item):
     conn = get_db()
     cursor = conn.cursor()
