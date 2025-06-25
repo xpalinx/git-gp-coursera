@@ -22,3 +22,12 @@ def update_item(item_id:int, item:Item):
     conn.commit()
     item.id = cursor.lastrowid
     return item
+
+@app.delete("/items/{item_id}")
+def update_item(item_id:int):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute(
+        "DELETE  FROM items  WHERE id  = ?", (item_id,))
+    conn.commit()
+    return {"message": "Item deleted"}
